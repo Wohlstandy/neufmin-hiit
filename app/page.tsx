@@ -2,18 +2,18 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const moves = [
-  ['Jumping jacks','Ouvre et ferme bras et jambes en rythme.','10% 23%'],
-  ['Chaise contre un mur','Dos plaqué, cuisses parallèles au sol.','50% 23%'],
-  ['Pompes','Corps gainé, poitrine vers le sol.','91% 25%'],
-  ['Abdominaux','Décolle les épaules sans tirer la nuque.','10% 41%'],
-  ['Monter sur une chaise','Pousse dans le talon, alterne les jambes.','50% 42%'],
-  ['Squats','Hanches en arrière, genoux dans l’axe.','91% 42%'],
-  ['Dips sur une chaise','Coudes vers l’arrière, épaules basses.','11% 59%'],
-  ['Planche','Serre les abdos et garde le dos droit.','52% 59%'],
-  ['Courir sur place','Reste léger et monte les genoux.','91% 59%'],
-  ['Fentes','Descends verticalement, alterne les côtés.','10% 76%'],
-  ['Pompes en T','Tourne le buste et tends le bras.','52% 76%'],
-  ['Planche sur le côté','Hanches hautes, corps bien aligné.','91% 77%'],
+  ['Jumping jacks','Ouvre et ferme bras et jambes en rythme.','0% 0%'],
+  ['Chaise contre un mur','Dos plaqué, cuisses parallèles au sol.','33.33% 0%'],
+  ['Pompes','Corps gainé, poitrine vers le sol.','66.66% 0%'],
+  ['Abdominaux','Décolle les épaules sans tirer la nuque.','100% 0%'],
+  ['Monter sur une chaise','Pousse dans le talon, alterne les jambes.','0% 50%'],
+  ['Squats','Hanches en arrière, genoux dans l’axe.','33.33% 50%'],
+  ['Dips sur une chaise','Coudes vers l’arrière, épaules basses.','66.66% 50%'],
+  ['Planche','Serre les abdos et garde le dos droit.','100% 50%'],
+  ['Courir sur place','Reste léger et monte les genoux.','0% 100%'],
+  ['Fentes','Descends verticalement, alterne les côtés.','33.33% 100%'],
+  ['Pompes en T','Tourne le buste et tends le bras.','66.66% 100%'],
+  ['Planche sur le côté','Hanches hautes, corps bien aligné.','100% 100%'],
 ] as const;
 type Phase='ready'|'work'|'rest'|'done';
 
