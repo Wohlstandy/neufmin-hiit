@@ -15,12 +15,13 @@ function loadAtlas(){
    const pixels=context.getImageData(0,0,buffer.width,buffer.height),data=pixels.data;
    for(let i=0;i<data.length;i+=4){
     const r=data[i],g=data[i+1],b=data[i+2],hi=Math.max(r,g,b),lo=Math.min(r,g,b);
-    if(lo>238&&hi-lo<7)data[i+3]=0;
-    else if(lo>225&&hi-lo<12)data[i+3]=Math.min(data[i+3],Math.max(0,(238-lo)*20));
+    const spread=hi-lo;
+    if(lo>220&&spread<28)data[i+3]=0;
+    else if(lo>195&&spread<18)data[i+3]=Math.min(data[i+3],Math.max(0,(220-lo)*10));
    }
    context.putImageData(pixels,0,0);resolve(buffer);
   };
-  image.onerror=reject;image.src='/neufmin-hiit/exercise-sprites-v2.png';
+  image.onerror=reject;image.src='/neufmin-hiit/exercise-sprites-v3.png';
  });
  return atlasPromise;
 }
