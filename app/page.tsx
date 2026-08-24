@@ -1,6 +1,7 @@
 'use client';
 
 import {useCallback,useEffect,useRef,useState} from 'react';
+import KineticCanvas from './KineticCanvas';
 
 const moves=[
  ['Jumping jacks','Ouvre et ferme bras et jambes en rythme.','0% 0%'],
@@ -118,6 +119,7 @@ export default function Home(){
   e.currentTarget.style.setProperty('--mx',`${e.clientX}px`);e.currentTarget.style.setProperty('--my',`${e.clientY}px`);
   e.currentTarget.style.setProperty('--rx',`${x*10}deg`);e.currentTarget.style.setProperty('--ry',`${y*-8}deg`);
  }}>
+  <KineticCanvas phase={phase} intensity={1-arc/100}/>
   <div className="atmosphere" aria-hidden="true"><i/><i/><span>NEUFMIN</span></div>
 
   {launchVisible&&<section className={`launch ${launching?'exit':''}`}>
