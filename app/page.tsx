@@ -20,6 +20,7 @@ export default function Home(){
  const elapsed=phase==='done'?540:idx*45+(phase==='rest'?30+(15-sec):phase==='work'?30-sec:0),overall=Math.min(100,elapsed/540*100);
  const nextIdx=Math.min(11,idx+1);
  return <main className={`app ${phase}`}>
+  <div className="energy" aria-hidden="true">{[0,1,2,3,4,5].map(i=><i key={i}/>)}</div>
   {!soundReady&&<section className="launch"><div className="launchMark">NM</div><div className="launchCopy"><span>SESSION GUIDÉE · 09:00</span><h1>TON CORPS.<br/><em>TON ROUND.</em></h1><p>12 mouvements. 30 secondes d’effort. 15 secondes pour reprendre ton souffle. Un clic, puis on pilote tout.</p><button onClick={start}>DÉMARRER AVEC LE SON <b>↗</b></button></div><div className="launchStats"><div><b>12</b><span>EXERCICES</span></div><div><b>30</b><span>SEC ON</span></div><div><b>15</b><span>SEC OFF</span></div></div></section>}
   <header className="topbar"><div className="wordmark"><i/>NEUF<span>MIN</span></div><div className="total"><span>PROGRESSION</span><div><i style={{width:`${overall}%`}}/></div><b>{Math.round(overall)}%</b></div><div className="topActions"><button onClick={()=>setMusic(v=>!v)}>{music?'♫ ON':'♫ OFF'}</button><span>{String(idx+1).padStart(2,'0')} / 12</span></div></header>
   <section className="dashboard">
