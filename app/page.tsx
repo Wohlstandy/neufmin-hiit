@@ -120,7 +120,7 @@ export default function Home(){
   e.currentTarget.style.setProperty('--rx',`${x*10}deg`);e.currentTarget.style.setProperty('--ry',`${y*-8}deg`);
  }}>
   <KineticCanvas phase={phase} intensity={1-arc/100}/>
-  <div className="atmosphere" aria-hidden="true"><i/><i/><span>NEUFMIN</span></div>
+  <div className="atmosphere" aria-hidden="true"><i/><i/></div>
 
   {launchVisible&&<section className={`launch ${launching?'exit':''}`}>
    <nav className="launchNav"><div className="wordmark"><i/>NEUF<span>MIN</span></div><span>HIIT DÉBUTANT · 09:00</span><b>12 MOUVEMENTS</b></nav>
