@@ -2,6 +2,7 @@
 
 import {useCallback,useEffect,useRef,useState} from 'react';
 import KineticCanvas from './KineticCanvas';
+import ExerciseVisual from './ExerciseVisual';
 
 const moves=[
  ['Jumping jacks','Ouvre et ferme bras et jambes en rythme.','0% 0%'],
@@ -133,7 +134,7 @@ export default function Home(){
    <div className="launchShowcase">
     <div className="showcaseHalo"/>
     <div className="showcaseTrack" key={launchDemo}>{demoSet.map((n,p)=><article className={p===1?'featured':''} key={n}>
-     <span>{String(n+1).padStart(2,'0')}</span><div style={{backgroundPosition:moves[n][2]}}/><b>{moves[n][0]}</b>
+     <span>{String(n+1).padStart(2,'0')}</span><ExerciseVisual index={n}/><b>{moves[n][0]}</b>
     </article>)}</div>
     <div className="showcaseHud"><span><i/> APERÇU LIVE</span><b>{moves[launchDemo][0]}</b><small>{String(launchDemo+1).padStart(2,'0')} / 12</small></div>
    </div>
@@ -154,16 +155,16 @@ export default function Home(){
     <span className="number">{String(idx+1).padStart(2,'0')}</span>
     <h2>{phase==='rest'?'RESPIRE':phase==='done'?'SOLIDE !':moves[idx][0]}</h2>
     <p>{phase==='rest'?(idx<11?`Prépare-toi : ${moves[nextIdx][0]}`:'Dernières secondes. Tu as fait le plus dur.'):phase==='done'?'Les 12 mouvements sont terminés. Round validé.':moves[idx][1]}</p>
-    <div className="next"><div className="nextThumb" style={{backgroundPosition:moves[nextIdx][2]}}/><small>{idx<11?'PROCHAIN MOUVEMENT':'OBJECTIF'}</small><b>{idx<11?moves[nextIdx][0]:'ROUND COMPLET'}</b><span>{idx<11?'30 SEC':'09:00'}</span></div>
+    <div className="next"><div className="nextThumb"><ExerciseVisual index={nextIdx}/></div><small>{idx<11?'PROCHAIN MOUVEMENT':'OBJECTIF'}</small><b>{idx<11?moves[nextIdx][0]:'ROUND COMPLET'}</b><span>{idx<11?'30 SEC':'09:00'}</span></div>
    </aside>
 
    <div className="motion">
     <div className="motionRings"><i/><i/><i/></div>
-    <div className="figureEcho" key={`echo-${idx}`} style={{backgroundPosition:moves[idx][2]}}/>
-    <div className="figure" key={idx} style={{backgroundPosition:moves[idx][2]}}/>
+    <ExerciseVisual index={idx} className="figureEcho" key={`echo-${idx}`}/>
+    <ExerciseVisual index={idx} className="figure" key={idx}/>
     <div className="ground"/>
-    <button className="prev" onClick={()=>jump(idx-1)} disabled={idx===0} aria-label="Exercice précédent">←</button>
-    <button className="nextBtn" onClick={()=>jump(idx+1)} disabled={idx===11} aria-label="Exercice suivant">→</button>
+    <button type="button" className="prev" onClick={()=>jump(idx-1)} disabled={idx===0} aria-label="Exercice précédent"><b>←</b><span>PRÉC.</span></button>
+    <button type="button" className="nextBtn" onClick={()=>jump(idx+1)} disabled={idx===11} aria-label="Exercice suivant"><span>SUIVANT</span><b>→</b></button>
     <div className="motionLabel"><span>DÉMONSTRATION</span><b>{moves[idx][0]}</b></div>
    </div>
 
